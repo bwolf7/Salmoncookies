@@ -2,7 +2,6 @@
 
 const locationsTable = document.getElementById('store-locations');
 
-let hours = ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'];
 const hoursOfOperation = ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'];
 
 function Location(name, minCustPerHour, maxCustPerHour, avgSalePerCust) {
@@ -11,111 +10,10 @@ function Location(name, minCustPerHour, maxCustPerHour, avgSalePerCust) {
   this.maxCustPerHour = maxCustPerHour;
   this.avgSalePerCust = avgSalePerCust;
   this.salesTotals = [];
-}
-function generateRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+
   Location.allLocations.push(this);
 }
 
-let seattle = {
-  name: 'seattle',
-  minCustPerHour: 23,
-  maxCustPerHour: 65,
-  avgCookPerCust: 6.3,
-  salesTotals: [],
-  grandTotal: 0,
-  hourlyCustomers: function() {
-    for (let hour = 0; hour < hours.length; hour++) {
-
-      let generateNumber = generateRange(this.minCustPerHour, this.maxCustPerHour);
-
-
-      let customerSales = Math.round(generateNumber * this.avgCookPerCust);
-      this.salesTotals.push(`${hours[hour]}: total sales ${customerSales}`);
-      this.grandTotal = this.grandTotal + customerSales;
-    }
-  },
-};
-
-let tokyo = {
-  name: 'tokyo',
-  minCustPerHour: 3,
-  maxCustPerHour: 24,
-  avgCookPerCust: 1.2,
-  salesTotals: [],
-  grandTotal: 0,
-  hourlyCustomers: function() {
-    for (let hour = 0; hour < hours.length; hour++) {
-
-      let generateNumber = generateRange(this.minCustPerHour, this.maxCustPerHour);
-
-
-      let customerSales = Math.round(generateNumber * this.avgCookPerCust);
-      this.salesTotals.push(`${hours[hour]}: total sales ${customerSales}`);
-      this.grandTotal = this.grandTotal + customerSales;
-    }
-  },
-};
-
-let dubai = {
-  name: 'dubai',
-  minCustPerHour: 11,
-  maxCustPerHour: 38,
-  avgCookPerCust: 3.7,
-  salesTotals: [],
-  grandTotal: 0,
-  hourlyCustomers: function() {
-    for (let hour = 0; hour < hours.length; hour++) {
-
-      let generateNumber = generateRange(this.minCustPerHour, this.maxCustPerHour);
-
-
-      let customerSales = Math.round(generateNumber * this.avgCookPerCust);
-      this.salesTotals.push(`${hours[hour]}: total sales ${customerSales}`);
-      this.grandTotal = this.grandTotal + customerSales;
-    }
-  },
-};
-
-let paris = {
-  name: 'paris',
-  minCustPerHour: 20,
-  maxCustPerHour: 38,
-  avgCookPerCust: 2.3,
-  salesTotals: [],
-  grandTotal: 0,
-  hourlyCustomers: function() {
-    for (let hour = 0; hour < hours.length; hour++) {
-
-      let generateNumber = generateRange(this.minCustPerHour, this.maxCustPerHour);
-
-
-      let customerSales = Math.round(generateNumber * this.avgCookPerCust);
-      this.salesTotals.push(`${hours[hour]}: total sales ${customerSales}`);
-      this.grandTotal = this.grandTotal + customerSales;
-    }
-  },
-};
-
-let lima = {
-  name: 'lima',
-  minCustPerHour: 2,
-  maxCustPerHour: 16,
-  avgCookPerCust: 4.6,
-  salesTotals: [],
-  grandTotal: 0,
-  hourlyCustomers: function() {
-    for (let hour = 0; hour < hours.length; hour++) {
-
-      let generateNumber = generateRange(this.minCustPerHour, this.maxCustPerHour);
-
-
-      let customerSales = Math.round(generateNumber * this.avgCookPerCust);
-      this.salesTotals.push(`${hours[hour]}: total sales ${customerSales}`);
-      this.grandTotal = this.grandTotal + customerSales;
-    }
-  },
-};
 Location.allLocations = [];
 
 Location.prototype.randomNumberOfCustomers = function() {
@@ -137,53 +35,42 @@ const lima = new Location('Lima', 2, 16, 4.6);
 
 
 
-function generateLineItems(store) {
-
-  let parentEl = document.querySelector(`#${store.name}`);
 function fillHourlySalesArrayAllLocations() {
   for (let i = 0; i < Location.allLocations.length; i++) {
     const currentLocation = Location.allLocations[i];
     currentLocation.fillHourlySalesArray();
   }
 }
-}
+
 fillHourlySalesArrayAllLocations();
 
 
 function _makeElement(tag, parent, text) {
-
+  
   const element = document.createElement(tag);
-
-  for (let total = 0; total < store.salesTotals.length; total++) {
+  
   parent.appendChild(element);
 
-    let newItem = document.createElement('li');
   if (text) {
     element.textContent = text;
   }
   return element; 
 }
-}
 
-    newItem.innerText = store.salesTotals[total];
 
-    parentEl.appendChild(newItem);
 Location.prototype.renderSingleLocation = function(body) {
   let total = 0;
 
   const rowEl = document.createElement('tr');
   body.appendChild(rowEl);
-
+  
   const thElem = _makeElement('th', rowEl, this.name);
-
+  
   for (let i = 0; i < hoursOfOperation.length; i++) {
     let cookiesThisHour = this.salesTotals[i];
     total += cookiesThisHour;
     _makeElement('td', rowEl, cookiesThisHour);
   }
-  let lastItem = document.createElement('li');
-  lastItem.innerText = store.grandTotal;
-  parentEl.appendChild(lastItem);
   _makeElement('td', rowEl, total)
 
 }
@@ -203,30 +90,20 @@ function makeTheFooter() {
   _makeElement('th', rowEl, 'Total');
   let hourlyTotal = 0;
   let grandTotal = 0;
-
+  
   for (let i = 0; i < hoursOfOperation.length; i++) {
     for (let j = 0; j < Location.allLocations.length; j++) {
       let currentLocation = Location.allLocations[j];
       hourlyTotal += currentLocation.salesTotals[i]
     }
-
+    
     _makeElement('td', rowEl, hourlyTotal);
     grandTotal += hourlyTotal;
     hourlyTotal = 0;
   }
-
+  
   _makeElement('td', rowEl, grandTotal);
 }
 
-seattle.hourlyCustomers();
-tokyo.hourlyCustomers();
-dubai.hourlyCustomers();
-paris.hourlyCustomers();
-lima.hourlyCustomers();
-generateLineItems(seattle);
-generateLineItems(tokyo);
-generateLineItems(dubai);
-generateLineItems(paris);
-generateLineItems(lima);
 renderAllLocations();
-makeTheFooter()
+makeTheFooter();

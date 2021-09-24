@@ -4,13 +4,47 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <header>
-        <h1>Salmon Cookies</h1>
-        <a href="index.html">Home</a>
+        <header>
+            <nav class="navbar">
+                <ul>
+                    
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="sales.html">Sales</a></li>
+                    
+                  </ul>
+              </nav>
+        </header>
     </header>
     <body>
-        <table id="store-locations">
+        <table id="sales-data">
             
         </table>
+
+        
+        <form id="apply">
+            <fieldset>
+              <legend class="thelegend">Apply for a Cookie Stand</legend>
+            <label class="thelabel" for="city">
+              City:
+              <input type="text" name="city" class="theinput">
+            </label>
+            <label class="thelabel" for="minimumCust">
+              Minimum Customers:
+              <input type="number" name="minimumCust" class="theinput">
+            </label>
+            <label class="thelabel" for="maximumCust">
+              Maximum Customers:
+              <input type="number" name="maximumCust" class="theinput">
+            </label>
+            <label class="thelabel" for="avgCookieSale">
+              Avg Cookie Sales:
+              <input type="number" name="avgCookieSale" class="theinput">
+            </label>
+            <br>
+            <button type="submit">Apply!</button>
+          </fieldset>
+        </form>
+
 
         <script src="app.js"></script>
         

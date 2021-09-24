@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  ;
+  
 }
 
 header { 
@@ -9,6 +9,7 @@ header {
   padding: 0 100px;
   box-sizing: border-box;
   background-color: beige;
+  border-bottom: solid salmon 10px;
 }
 
 header h1, header nav {
@@ -18,29 +19,35 @@ header h1, header nav {
 
 #header-text{
   margin-left: 10%;
+  width: 40%;
   position: relative;
-  bottom: 30px;
-  left: 750px;
+  right: 250px;
 }
 
 main {
-  height: calc(100vh - 300px);
+  height: calc(175vh);
   padding: 20px 100px;
   box-sizing: border-box;
+  background-color: darkolivegreen;
 }
 
 .card {
   width: 300px;
-  height: 375px;
+  height: 175px;
   display: inline-block;
   padding: 5%;
   margin: 2%;
   border: solid black 1px;
+  background-color: beige;
 
 }
 
+.card:hover{
+  background-color: salmon;
+}
+
 .card-body {
-  height: 75%;
+  height: 50%;
   background-color: biege;
 }
 
@@ -55,23 +62,32 @@ main {
 
 #navid{
     padding: 1px;
+    border: black solid;
+    width: 50px;
+    /* background-color: sienna; */
+    color: white;
+    text-decoration: none;
 }
 
 #main-row2{
     margin-left: 2%;
-    
-    
+     
 }
- #featured-item-text{
-    padding-left: 55%;
-    position: relative;
-    bottom: 400px;
-    width:400px;
+#main-row2.img{
+  border: black solid;
+}
 
-} 
 
 
 #button:hover{
   background-color: #3e8e41
 }
 
+#salmon{
+  width: 400px;
+  margin-left: 0px;
+}
+.main-row3{
+  width: 150px;
+  display:flexbox;
+}
